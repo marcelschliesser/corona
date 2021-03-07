@@ -1,0 +1,149 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="de" ng-app="marcellosApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Marcel">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Marcel</title>
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
+    <link rel="stylesheet" href="static/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="static/app.js"></script>
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+        <header
+            class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Marcel lernt Angular (<a href="/">Startseite</a>)</span>
+                <div class="mdl-layout-spacer"></div>
+
+            </div>
+        </header>
+        <div class="demo-ribbon"></div>
+        <main class="demo-main mdl-layout__content">
+            <div class="demo-container mdl-grid">
+                <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                <div
+                    class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                    <h4>Hi Lars,</h4>
+                    <p>Am Wochenende habe ich mich etwas mit Angular beschäftigt und ein kleines Corona Tagebuch
+                        gebastelt. Noch kein Moonshot aber ein valider MVP.</p>
+                    <p>Folgende Technologien habe ich verwendet:</p>
+                    <ul>
+                        <li>Python <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask Web Backend</a></li>
+                        <li>Das CSS Framework <a href="https://getmdl.io/">Material Design Lite</a></li>
+                        <li>Eine <a href="https://www.sqlite.org/index.html">SQLite Datenbank</a></li>
+                        <li>Gehostet in einem privaten Projekt in der Google Cloud mit <a
+                                href="https://cloud.google.com/run?hl=de">Cloud Run</a></li>
+                    </ul>
+                    <p>Eine Sache dir mir noch nicht ganz gefällt, dass man nach dem Speichern auf die Homepage mit 301 geleitet wird. Da muss ich mich noch etwas in die Angular Doc hängen. Ich wollte dann doch etwas das Wochenende genießen. ;) Den Code habe ich auf Github veröffentlicht.</p>
+                    <p>LGM</p>
+                    <h4>Angular Corona-Tagebuch</h4>
+
+                    {% raw %}
+                    <div ng-controller="GetController">
+
+
+
+                        <form>
+                            <div class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" type="text" id="sample1" ng-model="firstname">
+                                <label class="mdl-textfield__label" for="sample1">Dein Name ...</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" type="text" id="sample1" ng-model="content">
+                                <label class="mdl-textfield__label" for="sample1">Dein Beitrag ...</label>
+                            </div>
+                            <!-- Accent-colored raised button with ripple -->
+                            <button ng-click="push()"
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Speichern
+                            </button>
+                        </form>
+
+                    </div>
+                    {% endraw %}
+
+
+
+
+
+
+                    {% raw %}
+                    <div ng-controller="IndexController">
+
+
+
+
+                        <table class="mdl-data-table mdl-shadow--2dp">
+                            <thead>
+                                <tr>
+                                    <th>Autor</th>
+                                    <th>Beitrag</th>
+                                    <th>Datum</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat=" x in arr">
+                                    <td>{{x[2]}}</td>
+                                    <td>{{x[3]}}</td>
+                                    <td>{{x[1]}}</td>
+                                    <td><a href="/delete/{{x[0]}}">Löschen</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endraw %}
+
+                </div>
+            </div>
+            <footer class="demo-footer mdl-mini-footer">
+                <div class="mdl-mini-footer--left-section">
+                    <ul class="mdl-mini-footer--link-list">
+                        <li><a href="#">Geht nicht</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+
+</html>
